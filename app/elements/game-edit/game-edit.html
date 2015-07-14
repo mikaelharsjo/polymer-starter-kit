@@ -1,0 +1,80 @@
+<link rel="import" href="../../elements/app-globals/app-globals.html">
+<link rel="import" href="../../elements/game-info/game-info.html">
+<link rel="import" href="../../elements/game-quotes/game-quotes.html">
+
+<dom-module id="game-edit">
+  <style is="custom-style">
+    :root {
+      --right-margin: 50px;
+    }
+
+    paper-input {
+      margin-right: var(--right-margin);
+    }
+
+    h4 {
+      margin-bottom: 0;
+    }
+
+    paper-toggle-button {
+      margin-left: 10px;
+      margin-right: var(--right-margin);
+    }
+
+    label {
+      margin-left: var(--right-margin);
+    }
+  </style>
+
+  <template>
+
+    <div class="layout horizontal">
+      <section class="flex">
+        <h3>Your version:
+        <paper-input label="Title" value="{{game.name::input}}"></paper-input>
+        <paper-input label="Website" value="{{game.website::input}}"></paper-input>
+
+        <h4>Ages</h4>
+        <section class="layout horizontal">
+          <paper-input class="flex" label="Minimum" value="{{game.ages.min::input}}"></paper-input>
+          <paper-input class="flex" label="Maximum" value="{{game.ages.max::input}}"></paper-input>
+        </section>
+
+        <h4>Players</h4>
+        <section class="layout horizontal">
+          <paper-input class="flex" label="Minimum" value="{{game.ages.min::input}}"></paper-input>
+          <paper-input class="flex" label="Maximum" value="{{game.ages.max::input}}"></paper-input>
+          <paper-input class="flex" label="Recommended" value="{{game.ages.recommended::input}}"></paper-input>
+        </section>
+
+        <h4>Released</h4>
+        <section class="layout horizontal center">
+            <paper-input class="flex" label="Year" value="{{game.released.year::input}}"></paper-input>
+            <label>Released?
+              <paper-toggle-button class="flex" label="Released" value="{{game.released.released::input}}"></paper-toggle-button>
+            </label>
+        </section>
+
+      </section>
+
+      <section class="flex">
+        <h3>Community version:</h3>
+      </section>
+    </div>
+
+	</template>
+
+	<script>
+		(function() {
+			Polymer({
+				is: 'game-edit',
+
+				properties: {
+					game: Object
+				}
+
+			});
+		})();
+	</script>
+
+</dom-module>

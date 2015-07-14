@@ -23,6 +23,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // have resolved and content has been stamped to the page
   app.addEventListener('dom-change', function() {
     console.log('Our app is ready to rock!');
+    var editBtn = document.querySelector('#editButton');
+    console.log(editBtn);
+    app.editing = true;
+    editBtn.addEventListener('click', function() {
+      console.log('click');
+      app.editing = !app.editing;
+    });
   });
 
   // See https://github.com/Polymer/polymer/issues/1381
