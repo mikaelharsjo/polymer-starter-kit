@@ -9,16 +9,12 @@
 
 <dom-module id="game-info">
   <style is="custom-style">
-    :root {
-      --dark-primary-color: #303F9F;
-      --default-primary-color: #3F51B5;
-      --light-primary-color: #C5CAE9;
-      --text-primary-color: #ffffff; /*text/icons*/
-      --accent-color: #FF4081;
+    section {
+      padding: 16px;
     }
 
     div {
-      padding: 16px;
+      margin-top: 10px;
     }
 
     dl dd {
@@ -41,7 +37,7 @@
       line-height: 1.9;
       /*display: inline;*/
       color: #fff;
-      padding: .2em .6em .3em;
+      padding: .2em .6em .2em;
       font-size: 75%;
       font-weight: 700;
       text-align: center;
@@ -52,6 +48,14 @@
 
     .tag-category {
       background-color: var(--accent-color);
+    }
+
+    .tag-mechanics {
+      background-color: var(--google-green-500);
+    }
+
+    .tag-tags {
+      background-color: var(--dark-primary-color);
     }
 
     iron-icon {
@@ -71,7 +75,7 @@
   <template>
     <iron-image src="http://lorempixel.com/400/400" style="width:100%; height: 200px" sizing="cover"></iron-image>
 
-    <div>
+    <section>
 
       <h3>{{name}}</h3>
 
@@ -81,27 +85,21 @@
       <iron-icon icon="star" class="rating"></iron-icon>
       <iron-icon icon="star" class="rating"></iron-icon>
 
+      <div>
+        <template is="dom-repeat" items="{{categories}}">
+          <span class="tag tag-category">{{item}}</span>
+        </template>
+
+        <template is="dom-repeat" items="{{mechanics}}">
+          <span class="tag tag-mechanics">{{item}}</span>
+        </template>
+
+        <template is="dom-repeat" items="{{tags}}">
+          <span class="tag tag-tags">{{item}}</span>
+        </template>
+      </div>
+
       <dl>
-        <dd>
-          <template is="dom-repeat" items="{{categories}}">
-            <span class="tag tag-category">{{item}}</span>
-          </template>
-          <!--<tag-manager readonly="{{readonly}}" hint="+" tagClass="categories" tags="{{categories}}" suggestions="{{allCategories}}"></tag-manager>-->
-        </dd>
-        <dt>
-          <iron-icon icon="build"></iron-icon>
-          <label>Mechanics</label>
-        </dt>
-        <dd>TBD
-          <!--<tag-manager readonly="{{readonly}}" hint="+" tagClass="mechanics" tags="{{mechanics}}" suggestions="{{allMechanics}}"></tag-manager>-->
-        </dd>
-        <dt>
-          <iron-icon icon="label"></iron-icon>
-          <label>Tags</label>
-        </dt>
-        <dd> TBD
-          <!-- <tag-manager readonly="{{readonly}}" hint="+" tagClass="tags" tags="{{tags}}" suggestions="{{allTags}}"></tag-manager> -->
-        </dd>
         <dt>
           <iron-icon icon="event" class="icon"></iron-icon>
           <label>Released</label>
@@ -166,7 +164,7 @@
           30-70 min
         </dd>
       </dl>
-    </div>
+    </section>
   </template>
 
 	<script>
