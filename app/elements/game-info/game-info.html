@@ -8,7 +8,15 @@
 <link rel="import" href="../game-info/game-info.html">
 
 <dom-module id="game-info">
-  <style>
+  <style is="custom-style">
+    :root {
+      --dark-primary-color: #303F9F;
+      --default-primary-color: #3F51B5;
+      --light-primary-color: #C5CAE9;
+      --text-primary-color: #ffffff; /*text/icons*/
+      --accent-color: #FF4081;
+    }
+
     div {
       padding: 16px;
     }
@@ -27,6 +35,23 @@
     dl dt {
       display: inline-block;
       min-width: 40%;
+    }
+
+    .tag {
+      line-height: 1.9;
+      /*display: inline;*/
+      color: #fff;
+      padding: .2em .6em .3em;
+      font-size: 75%;
+      font-weight: 700;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      margin-bottom: 3px;
+    }
+
+    .tag-category {
+      background-color: var(--accent-color);
     }
 
     iron-icon {
@@ -57,11 +82,10 @@
       <iron-icon icon="star" class="rating"></iron-icon>
 
       <dl>
-        <dt>
-          <iron-icon icon="subject"></iron-icon>
-          <label>Category</label>
-        </dt>
-        <dd>TBD
+        <dd>
+          <template is="dom-repeat" items="{{categories}}">
+            <span class="tag tag-category">{{item}}</span>
+          </template>
           <!--<tag-manager readonly="{{readonly}}" hint="+" tagClass="categories" tags="{{categories}}" suggestions="{{allCategories}}"></tag-manager>-->
         </dd>
         <dt>
