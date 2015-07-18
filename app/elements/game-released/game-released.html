@@ -1,13 +1,6 @@
 <dom-module id="game-released">
   <template>
-    <app-globals id="globals"></app-globals>
-
-    <span hidden?="{{!readOnly}}">{{_releasedText(model)}}</span>
-
-    <!--<span hidden?="{{readOnly}}">
-      <paper-toggle-button checked="{{model.released}}" on-change="{{releasedChanged}}"></paper-toggle-button>&nbsp;&nbsp;
-      <paper-input id="year" label="year" value="{{model.year}}"></paper-input>
-    </span>-->
+    <span>{{_releasedText(model)}}</span>
   </template>
 
 	<script>
