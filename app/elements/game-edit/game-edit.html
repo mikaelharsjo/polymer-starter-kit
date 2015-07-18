@@ -1,5 +1,4 @@
-<link rel="import" href="../../elements/game-info/game-info.html">
-<link rel="import" href="../../elements/game-quotes/game-quotes.html">
+<link rel="import" href="../../elements/game-ratings/game-ratings.html">
 
 <dom-module id="game-edit">
   <style is="custom-style">
@@ -23,6 +22,10 @@
     label {
       margin-left: var(--right-margin);
     }
+
+    game-ratings {
+      margin-top: 20px;
+    }
   </style>
 
   <template>
@@ -30,7 +33,11 @@
     <div class="layout horizontal">
       <section class="flex">
         <h3>Your version:
+
+        <game-ratings rating="{{game.rating}}"></game-ratings>
+
         <paper-input label="Title" value="{{game.name::input}}"></paper-input>
+
         <paper-input label="Website" value="{{game.website::input}}"></paper-input>
 
         <h4>Ages</h4>
