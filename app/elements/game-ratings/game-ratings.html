@@ -1,0 +1,41 @@
+<dom-module id="game-ratings">
+  <style>
+    :host {
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    iron-icon {
+      color: var(--paper-amber-600);
+      height: 40px;
+      width: 40px;
+    }
+  </style>
+  <template>
+    <template is="dom-repeat" items='["1", "2" , "3", "4", "5"]'>
+      <iron-icon icon="star" hidden$="{{hideFull(item)}}"></iron-icon>
+      <iron-icon icon="star-border" hidden$="{{hideEmpty(item)}}"></iron-icon>
+    </template>
+  </template>
+
+	<script>
+	  (function() {
+	    Polymer({
+	      is: 'game-ratings',
+
+	      properties: {
+	        rating: Number
+	      },
+
+        hideFull: function(star) {
+          return star > this.rating;
+        },
+
+        hideEmpty: function(star) {
+          return star <= this.rating;
+        }
+      });
+	  })();
+	</script>
+
+</dom-module>

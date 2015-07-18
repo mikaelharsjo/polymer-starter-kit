@@ -5,7 +5,7 @@
 <link rel="import" href="../game-designers/game-designers.html">
 <link rel="import" href="../game-publishers/game-publishers.html">
 <link rel="import" href="../game-released/game-released.html">
-<link rel="import" href="../game-info/game-info.html">
+<link rel="import" href="../game-ratings/game-ratings.html">
 
 <dom-module id="game-info">
   <style is="custom-style">
@@ -65,12 +65,6 @@
     label {
       font-weight: 300;
     }
-
-    iron-icon.rating {
-      color: var(--paper-amber-600);
-      height: 40px;
-      width: 40px;
-    }
   </style>
   <template>
     <iron-image src="http://lorempixel.com/400/400" style="width:100%; height: 200px" sizing="cover"></iron-image>
@@ -79,11 +73,7 @@
 
       <h3>{{name}}</h3>
 
-      <iron-icon icon="star" class="rating"></iron-icon>
-      <iron-icon icon="star" class="rating"></iron-icon>
-      <iron-icon icon="star" class="rating"></iron-icon>
-      <iron-icon icon="star" class="rating"></iron-icon>
-      <iron-icon icon="star" class="rating"></iron-icon>
+      <game-ratings rating="4 "></game-ratings>
 
       <div>
         <template is="dom-repeat" items="{{categories}}">
