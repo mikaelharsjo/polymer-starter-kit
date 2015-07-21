@@ -9,11 +9,15 @@
       height: 40px;
       width: 40px;
     }
+
+    iron-icon.empty:hover {
+      fill: var(--paper-amber-900);
+    }
   </style>
   <template>
-    <template is="dom-repeat" items='["1", "2" , "3", "4", "5"]'>
-      <iron-icon icon="star" hidden$="{{hideFull(item)}}"></iron-icon>
-      <iron-icon icon="star-border" hidden$="{{hideEmpty(item)}}"></iron-icon>
+    <template id="stars" is="dom-repeat" items="{{stars}}">
+      <iron-icon icon="star" hidden$="{{hideFull(item)}}" on-click="setRating"></iron-icon>
+      <iron-icon class="empty" icon="star-border" hidden$="{{hideEmpty(item)}}" on-click="setRating"></iron-icon>
     </template>
   </template>
 
@@ -23,7 +27,19 @@
 	      is: 'game-ratings',
 
 	      properties: {
-	        rating: Number
+	        rating: {
+            type: Number,
+            notify: true,
+            observer: 'refreshStars'
+          },
+          editable: Boolean,
+          stars: {
+            type: Array,
+            notify: true,
+            value: function(arguments) {
+              return ["1", "2" , "3", "4", "5"];
+            }
+          }
 	      },
 
         hideFull: function(star) {
@@ -32,6 +48,20 @@
 
         hideEmpty: function(star) {
           return star <= this.rating;
+        },
+
+        refreshStars: function() {
+          this.set('stars', []);
+          for (var i = 1; i <= 5; i++) {
+            this.push('stars', i.toString());
+          }
+
+          this.$.stars.render();
+        },
+
+        setRating: function(e) {
+          var model = e.model;
+          this.rating = model.item;
         }
       });
 	  })();
