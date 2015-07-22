@@ -6,6 +6,7 @@
 <link rel="import" href="../game-publishers/game-publishers.html">
 <link rel="import" href="../game-released/game-released.html">
 <link rel="import" href="../game-ratings/game-ratings.html">
+<link rel="import" href="../../elements/tag-list/tag-list.html">
 
 <dom-module id="game-info">
   <style is="custom-style">
@@ -33,31 +34,6 @@
       min-width: 40%;
     }
 
-    .tag {
-      line-height: 1.9;
-      /*display: inline;*/
-      color: #fff;
-      padding: .2em .6em .2em;
-      font-size: 75%;
-      font-weight: 700;
-      text-align: center;
-      white-space: nowrap;
-      vertical-align: baseline;
-      margin-bottom: 3px;
-    }
-
-    .tag-category {
-      background-color: var(--accent-color);
-    }
-
-    .tag-mechanics {
-      background-color: var(--google-green-500);
-    }
-
-    .tag-tags {
-      background-color: var(--dark-primary-color);
-    }
-
     iron-icon {
       color: var(--secondary-text-color);
     }
@@ -80,17 +56,9 @@
       <game-ratings rating="{{rating}}"></game-ratings>
 
       <div>
-        <template is="dom-repeat" items="{{categories}}">
-          <span class="tag tag-category">{{item}}</span>
-        </template>
-
-        <template is="dom-repeat" items="{{mechanics}}">
-          <span class="tag tag-mechanics">{{item}}</span>
-        </template>
-
-        <template is="dom-repeat" items="{{tags}}">
-          <span class="tag tag-tags">{{item}}</span>
-        </template>
+        <tag-list tags="{{categories}}" tag-class="tag-first"></tag-list>
+        <tag-list tags="{{mechanics}}" tag-class="tag-second"></tag-list>
+        <tag-list tags="{{tags}}" tag-class="tag-third"></tag-list>
       </div>
 
       <dl>
