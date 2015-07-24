@@ -1,0 +1,58 @@
+<link rel="import" href="../../elements/tag-list/tag-list.html">
+
+<dom-module id="tag-edit">
+  <style>
+    :host {
+      display: block;
+    }
+
+    paper-input {
+      margin-bottom: 20px;
+    }
+  </style>
+
+  <template>
+    <tag-list tags="{{tags}}" tag-class="{{tagClass}}"></tag-list>
+    <paper-icon-button raised icon="add-circle" on-click="showAdd"></paper-icon-button>
+    <paper-input id="add" hidden="{{!showAdder}}" label="Add tag" value="{{tag::input}}" no-label-float></paper-input>
+  </template>
+
+  <script>
+    (function () {
+      Polymer({
+        is: 'tag-edit',
+
+        properties: {
+          tags: {
+            type: Array,
+            showAdder: {
+              type: Boolean,
+              value: false
+            },
+            tag: String,
+            tagClass: String
+          }
+        },
+
+        ready: function() {
+          this.showAdder = false;
+        },
+
+        showAdd: function() {
+          this.showAdder = !this.showAdder;
+
+          var self = this;
+          this.$.add.addEventListener('blur', function() {
+            if (self.tag) {
+              self.push('tags', self.tag);
+            }
+            self.tag = '';
+          });
+
+          this.$.add.inputElement.focus();
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

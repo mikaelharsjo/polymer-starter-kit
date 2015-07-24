@@ -1,4 +1,5 @@
 <link rel="import" href="../../elements/game-ratings/game-ratings.html">
+<link rel="import" href="../../elements/tag-edit/tag-edit.html">
 
 <dom-module id="game-edit">
   <style is="custom-style">
@@ -6,7 +7,11 @@
       --right-margin: 50px;
     }
 
-    paper-input {
+    section {
+      margin-right: var(--right-margin);
+    }
+
+    .margin-right {
       margin-right: var(--right-margin);
     }
 
@@ -32,9 +37,13 @@
 
     <div class="layout horizontal">
       <section class="flex">
-        <h3>Your version:
+        <h3>Your version:</h3>
 
         <game-ratings rating="{{game.rating}}" editable="true"></game-ratings>
+
+        <tag-edit tags="{{game.categories}}" tag-class="tag-first"></tag-edit>
+        <tag-edit tags="{{game.mechanics}}" tag-class="tag-second"></tag-edit>
+        <tag-edit tags="{{game.tags}}" tag-class="tag-third"></tag-edit>
 
         <paper-input label="Title" value="{{game.name::input}}"></paper-input>
 
@@ -42,14 +51,14 @@
 
         <h4>Ages</h4>
         <section class="layout horizontal">
-          <paper-input class="flex" label="Minimum" value="{{game.ages.min::input}}"></paper-input>
+          <paper-input class="flex margin-right" label="Minimum" value="{{game.ages.min::input}}"></paper-input>
           <paper-input class="flex" label="Maximum" value="{{game.ages.max::input}}"></paper-input>
         </section>
 
         <h4>Players</h4>
         <section class="layout horizontal">
-          <paper-input class="flex" label="Minimum" value="{{game.ages.min::input}}"></paper-input>
-          <paper-input class="flex" label="Maximum" value="{{game.ages.max::input}}"></paper-input>
+          <paper-input class="flex margin-right" label="Minimum" value="{{game.ages.min::input}}"></paper-input>
+          <paper-input class="flex margin-right" label="Maximum" value="{{game.ages.max::input}}"></paper-input>
           <paper-input class="flex" label="Recommended" value="{{game.ages.recommended::input}}"></paper-input>
         </section>
 
