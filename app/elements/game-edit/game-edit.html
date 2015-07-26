@@ -1,14 +1,14 @@
 <link rel="import" href="../../elements/game-ratings/game-ratings.html">
 <link rel="import" href="../../elements/tag-edit/tag-edit.html">
+<link rel="import" href="../../elements/game-ages/game-ages.html">
+<link rel="import" href="../../elements/game-players/game-players.html">
+
+
 
 <dom-module id="game-edit">
   <style is="custom-style">
     :root {
       --right-margin: 50px;
-    }
-
-    section {
-      margin-right: var(--right-margin);
     }
 
     .margin-right {
@@ -31,50 +31,123 @@
     game-ratings {
       margin-top: 20px;
     }
+
+    .left-col {
+      margin-right: var(--right-margin);
+    }
   </style>
 
   <template>
 
     <div class="layout horizontal">
-      <section class="flex">
+      <div class="flex left-col">
         <h3>Your version:</h3>
+      </div>
+      <div class="flex">
+        <h3>Community version:</h3>
+      </div>
+    </div>
 
+    <div class="layout horizontal">
+      <div class="flex left-col">
         <game-ratings rating="{{game.rating}}" editable="true"></game-ratings>
+      </div>
+      <div class="flex">
+        <game-ratings rating="{{game.rating}}" editable="false"></game-ratings>
+      </div>
+    </div>
 
+    <div class="layout horizontal">
+      <div class="flex left-col">
         <tag-edit tags="{{game.categories}}" tag-class="tag-first"></tag-edit>
+      </div>
+      <div class="flex">
+        <tag-list tags="{{game.categories}}" tag-class="tag-first"></tag-list>
+      </div>
+    </div>
+
+    <div class="layout horizontal">
+      <div class="flex left-col">
         <tag-edit tags="{{game.mechanics}}" tag-class="tag-second"></tag-edit>
+      </div>
+      <div class="flex">
+        <tag-list tags="{{game.mechanics}}" tag-class="tag-second"></tag-list>
+      </div>
+    </div>
+
+    <div class="layout horizontal">
+      <div class="flex left-col">
         <tag-edit tags="{{game.tags}}" tag-class="tag-third"></tag-edit>
+      </div>
+      <div class="flex">
+        <tag-list tags="{{game.tags}}" tag-class="tag-third"></tag-list>
+      </div>
+    </div>
 
+    <div class="layout horizontal">
+      <div class="flex left-col">
         <paper-input label="Title" value="{{game.name::input}}"></paper-input>
+      </div>
+      <div class="flex self-center">
+        <span>{{game.name}}</span>
+      </div>
+    </div>
 
+    <div class="layout horizontal">
+      <div class="flex left-col">
         <paper-input label="Website" value="{{game.website::input}}"></paper-input>
+      </div>
+      <div class="flex self-center">
+        <span>{{game.website}}</span>
+      </div>
+    </div>
 
-        <h4>Ages</h4>
+    <h4>Ages</h4>
+    <div class="layout horizontal">
+      <div class="flex left-col">
         <section class="layout horizontal">
           <paper-input class="flex margin-right" label="Minimum" value="{{game.ages.min::input}}"></paper-input>
           <paper-input class="flex" label="Maximum" value="{{game.ages.max::input}}"></paper-input>
         </section>
-
-        <h4>Players</h4>
+      </div>
+      <div class="flex self-center">
         <section class="layout horizontal">
-          <paper-input class="flex margin-right" label="Minimum" value="{{game.ages.min::input}}"></paper-input>
-          <paper-input class="flex margin-right" label="Maximum" value="{{game.ages.max::input}}"></paper-input>
+          <game-ages min="{{game.ages.min}}" max="{{game.ages.max}}"></game-ages>
+        </section>
+      </div>
+    </div>
+
+    <h4>Players</h4>
+    <div class="layout horizontal">
+      <div class="flex left-col">
+        <section class="layout horizontal">
+          <paper-input class="flex margin-right" label="Minimum" value="{{game.players.min::input}}"></paper-input>
+          <paper-input class="flex margin-right" label="Maximum" value="{{game.players.max::input}}"></paper-input>
           <paper-input class="flex" label="Recommended" value="{{game.ages.recommended::input}}"></paper-input>
         </section>
-
-        <h4>Released</h4>
-        <section class="layout horizontal center">
-            <paper-input class="flex" label="Year" value="{{game.released.year::input}}"></paper-input>
-            <label>Released?
-              <paper-toggle-button class="flex" label="Released" value="{{game.released.released::input}}"></paper-toggle-button>
-            </label>
+      </div>
+      <div class="flex self-center">
+        <section class="layout horizontal">
+          <game-players min="{{game.players.min}}" max="{{game.players.max}}"></game-players>
         </section>
+      </div>
+    </div>
 
-      </section>
-
-      <section class="flex">
-        <h3>Community version:</h3>
-      </section>
+    <h4>Released</h4>
+    <div class="layout horizontal">
+      <div class="flex left-col">
+        <section class="layout horizontal center">
+          <paper-input class="flex" label="Year" value="{{game.released.year::input}}"></paper-input>
+          <label>Released?
+            <paper-toggle-button class="flex" label="Released" value="{{game.released.released::input}}"></paper-toggle-button>
+          </label>
+        </section>
+      </div>
+      <div class="flex self-center">
+        <section class="layout horizontal">
+          <game-released model="{{game.released}}"></game-released>
+        </section>
+      </div>
     </div>
 
 	</template>
