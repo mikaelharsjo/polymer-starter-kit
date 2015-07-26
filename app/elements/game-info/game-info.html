@@ -63,11 +63,46 @@
 
       <dl>
         <dt>
+          <iron-icon icon="face"></iron-icon>
+          <label>Players</label>
+        </dt>
+        <dd>
+          <game-players min={{players.min}} max={{players.max}} recommended={{players.recommended}}></game-players>
+        </dd>
+        <dt>
+          <iron-icon icon="hourglass-empty"></iron-icon>
+          <label>Ages</label>
+        </dt>
+        <dd>
+          <game-ages min="{{ages.min}}" max="9"></game-ages>
+        </dd>
+        <dt>
+          <iron-icon icon="schedule"></iron-icon>
+          <label>Time</label>
+        </dt>
+        <dd>
+          30-70 min
+        </dd>
+        <dt>
           <iron-icon icon="event"></iron-icon>
           <label>Released</label>
         </dt>
         <dd>
           <game-released model="{{released}}"></game-released>
+        </dd>
+        <dt>
+          <iron-icon icon="home"></iron-icon>
+          <label>Website</label>
+        </dt>
+        <dd>
+          <a href="{{website}}">{{website}}</a>
+        </dd>
+        <dt>
+          <iron-icon icon="book"></iron-icon>
+          <label>Rules</label>
+        </dt>
+        <dd>
+          <a href="{{rules}}">{{rules}}</a>
         </dd>
         <dt>
           <iron-icon icon="image:edit"></iron-icon>
@@ -89,41 +124,6 @@
         </dt>
         <dd>
           <game-publishers publishers="{{publishers}}"></game-publishers>
-        </dd>
-        <dt>
-          <iron-icon icon="home"></iron-icon>
-          <label>Website</label>
-        </dt>
-        <dd>
-          <a href="{{website}}">{{website}}</a>
-        </dd>
-        <dt>
-          <iron-icon icon="book"></iron-icon>
-          <label>Rules</label>
-        </dt>
-        <dd>
-          <a href="{{rules}}">{{rules}}</a>
-        </dd>
-        <dt>
-          <iron-icon icon="face"></iron-icon>
-          <label>Players</label>
-        </dt>
-        <dd>
-          <game-players min={{players.min}} max={{players.max}} recommended={{players.recommended}}></game-players>
-        </dd>
-        <dt>
-          <iron-icon icon="hourglass-empty"></iron-icon>
-          <label>Ages</label>
-        </dt>
-        <dd>
-          <game-ages min="{{ages.min}}" max="9"></game-ages>
-        </dd>
-        <dt>
-          <iron-icon icon="schedule"></iron-icon>
-          <label>Time</label>
-        </dt>
-        <dd>
-          30-70 min
         </dd>
       </dl>
     </section>
