@@ -1,6 +1,6 @@
 <dom-module id="game-ages">
   <template>
-	   <span>{{_ages(min, max)}}</span>
+	   <span>{{agesText}}</span>
   </template>
 
   <script>
@@ -10,9 +10,14 @@
 
       	properties: {
       		min: String,
-      		max: String
+      		max: String,
+
+          agesText: {
+            type: String,
+            computed: '_ages(min, max)'
+          }
       	},
-        // make computed prop?
+
       	_ages: function (min, max) {
       		var agesText = '';
       		if (min) {
