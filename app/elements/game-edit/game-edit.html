@@ -137,13 +137,13 @@
         <section class="layout horizontal center">
           <paper-input class="flex" label="Year" value="{{game.released.year::input}}"></paper-input>
           <label>Released?
-            <paper-toggle-button class="flex" label="Released" value="{{game.released.released::input}}"></paper-toggle-button>
+            <paper-toggle-button class="flex" label="Released" checked="{{game.released.released}}"></paper-toggle-button>
           </label>
         </section>
       </div>
       <div class="flex self-center">
         <section class="layout horizontal">
-          <game-released model="{{game.released}}"></game-released>
+          <game-released year="{{game.released.year}}" is-released="{{game.released.released}}"></game-released>
         </section>
       </div>
     </div>

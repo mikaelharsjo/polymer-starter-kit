@@ -1,6 +1,6 @@
 <dom-module id="game-released">
   <template>
-    <span>{{_releasedText(model)}}</span>
+    <span>{{releasedText}}</span>
   </template>
 
 	<script>
@@ -9,47 +9,20 @@
 	      is: 'game-released',
 
 	      properties: {
-	        model: Object
+	        year: String,
+          isReleased: Boolean,
+
+          releasedText: {
+            type: String,
+            computed: '_releasedText(year, isReleased)'
+          }
 	      },
 
-        _releasedText: function(model) {
-          return model.released ? model.year : 'Unreleased';
+        _releasedText: function(year, isReleased) {
+          return isReleased ? year : 'To be released ' + year;
         }
 	    });
 	  })();
 	</script>
 
 </dom-module>
-
-
-<!-- Todo: Fix when edit mode exists
-
-  <script>
-    Polymer({
-    is: 'game-released',
-    properties: {
-      model: {
-        year: undefined,
-        released: false
-      }
-    },
-    ready: function () {
-      if (!this.model.released) {
-        this.$.year.disabled = false;
-        this.readOnly = this.$.globals.readOnly;
-      }
-    },
-
-    releasedChanged: function (e, detail, sender) {
-      if (this.model.released) {
-        this.$.year.disabled = false;
-        this.$.year.focus();
-      } else {
-        this.$.year.disabled = true;
-      }
-    }
-  });
-
-</script>
-</dom-module>
--->
