@@ -28,6 +28,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.params = data.params;
     });
 
+    page('/games', function () {
+      app.route = 'games';
+    });
+
+    page('/games/:name', function (data) {
+      app.route = 'game-info';
+      app.params = data.params;
+      app.jumbotron = 'A Game of Thrones';
+      app.bottomTitle = 'A board game of conflict and intrigue for 3-6 players';
+    });
+
     page('/contact', function () {
       app.route = 'contact';
     });

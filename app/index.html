@@ -75,6 +75,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <span>Home</span>
           </a>
 
+          <a data-route="games" href="/games" on-click="onDataRouteClick">
+            <iron-icon icon="extension"></iron-icon>
+            <span>Games</span>
+          </a>
+
           <a data-route="users" href="/users" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>Users</span>
@@ -102,12 +107,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <!-- Application name -->
           <div class="middle middle-container center horizontal layout">
-            <div class="app-name">Polymer Starter Kit</div>
+            <div class="app-name">{{jumbotron}}</div>
           </div>
 
           <!-- Application sub title -->
           <div class="bottom bottom-container center horizontal layout">
-            <div class="bottom-title paper-font-subhead">The future of the web today</div>
+            <div class="bottom-title paper-font-subhead">{{bottomTitle}}</div>
           </div>
 
         </paper-toolbar>
@@ -136,6 +141,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </h2>
                 <div>This is <span>{{params.name}}</span>'s section</div>
               </paper-material>
+            </section>
+
+            <section data-route="games">
+              <paper-material elevation="1">
+                <h2 class="paper-font-display2">Games</h2>
+                <p>This is the games section</p>
+                <a href="/games/game-of-thrones">Game of Thrones</a>
+              </paper-material>
+            </section>
+
+            <section data-route="game-info">
+              <game-edit hidden="{{editing}}" game='{"rating": 3, "rules": "rules-of-the-game.pdf", "name": "Name of Game", "website": "www.google.com", "ages": {"min": "11", "max": "99"}, "players": {"min": "1", "max": "2", "recommended": "3"}, "artists": [{"name": "artist1"}, {"name": "artist2"}], "designers": [{"name": "designer1"}, {"name": "designer2"}], "publishers": [{"name": "publisher1"}, {"name": "publisher2"}], "released": {"year": "2015", "released": "true"}, "categories": ["Adventure", "Card game", "Fantasy", "Fighting", "Miniatures"], "mechanics": ["Auction/Bidding", "Battle", "Card Drafting", "Co-operative Play", "Dice Rolling", "Storytelling"], "tags": ["crowdfunded", "priceworthy"]}'></game-edit>
+              <game-main hidden="{{!editing}}" game='{"rating": 3, "quotes":[{"heading": "Easy to understand the rules", "description": "Some conventions common to card shifting games are presumed to be understood.", "votes": 14, "pro": false}], "rules": "rulesof-the-game.pdf", "name": "Game of Thrones", "website": "www.google.com", "ages": {"min": "11", "max": ""}, "players": {"min": "1", "max": "2", "recommended": "3"}, "artists": [{"name": "artist1"}, {"name": "artist2"}], "designers": [{"name": "designer1"}, {"name": "designer2"}], "publishers": [{"name": "publisher1"}, {"name": "publisher2"}], "released": {"year": "2015", "released": "true"}, "categories": ["Fantasy", "Strategy"], "mechanics": ["Battle", "Card Drafting", "Co-operative Play", "Dice Rolling"], "tags": ["tv-series"]}'></game-main>
             </section>
 
             <section data-route="contact">
