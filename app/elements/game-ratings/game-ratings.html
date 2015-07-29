@@ -14,10 +14,14 @@
       fill: var(--paper-amber-900);
     }
   </style>
+
   <template>
     <template id="stars" is="dom-repeat" items="{{stars}}">
-      <iron-icon icon="star" hidden$="{{hideFull(item)}}" on-click="setRating"></iron-icon>
-      <iron-icon class="empty" icon="star-border" hidden$="{{hideEmpty(item)}}" on-click="setRating"></iron-icon>
+      <iron-icon icon="star" on-click="setRating"></iron-icon>
+    </template>
+
+    <template is="dom-repeat" items="{{emptyStars}}">
+      <iron-icon icon="star-border" on-click="setRating"></iron-icon>
     </template>
   </template>
 
@@ -29,39 +33,39 @@
 	      properties: {
 	        rating: {
             type: Number,
-            notify: true,
-            observer: 'refreshStars'
+            notify: true
           },
           editable: Boolean,
           stars: {
             type: Array,
-            notify: true,
-            value: function() {
-              return ['1', '2', '3', '4', '5'];
-            }
-          }
+            computed: '_createStars(rating)'
+          },
+          emptyStars: {
+            type: Array,
+            computed: '_createEmptyStars(rating)',
+          },
 	      },
 
-        hideFull: function(star) {
-          return star > this.rating;
-        },
-
-        hideEmpty: function(star) {
-          return star <= this.rating;
-        },
-
-        refreshStars: function() {
-          this.set('stars', []);
-          for (var i = 1; i <= 5; i++) {
-            this.push('stars', i.toString());
+        _seedStars: function(start, end) {
+          var stars = [];
+          for (var i = start; i <= end; i++) {
+            stars.push(i.toString());
           }
+          return stars;
+        },
 
-          this.$.stars.render();
+        _createStars: function(rating) {
+          // possibly a polymer bug, investigate
+          return this._seedStars(1, parseInt(rating));
+        },
+
+        _createEmptyStars: function(rating) {
+          var start = parseInt(rating) + 1;
+          return this._seedStars(start, 5);
         },
 
         setRating: function(e) {
-          var model = e.model;
-          this.rating = model.item;
+          this.rating = e.model.item;
         }
       });
 	  })();
