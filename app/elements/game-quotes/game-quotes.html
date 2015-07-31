@@ -18,12 +18,8 @@
       padding-right: 13px;
     }
 
-    paper-dialog-scrollable {
-      padding: 16px;
-    }
-
     paper-input {
-      margin: 0 20px 0 20px;
+      min-width: 400px;
     }
 
     .con {
@@ -51,22 +47,22 @@
 
     <div class="layout horizontal end-justified">
       <paper-button raised on-click="addPro">
-        <iron-icon icon="thumb-up" class="pro"></iron-icon> Add pro
+        <iron-icon icon="thumb-up" class="pro"></iron-icon> Add plus
       </paper-button>
       <paper-button raised on-click="addCon">
-        <iron-icon icon="thumb-down" class="con"></iron-icon> Add con
+        <iron-icon icon="thumb-down" class="con"></iron-icon> Add minus
       </paper-button>
     </div>
 
-    <paper-dialog id="dialog">
-      <h2>{{modalHeading}}</h2>
-      <paper-dialog-scrollable>
+    <paper-dialog id="dialog" modal>
+      <div>
+        <h2><iron-icon class="pro" hidden$="{{!newItem.pro}}" icon="thumb-up"></iron-icon><iron-icon class="con" hidden$="{{newItem.pro}}" icon="thumb-down"></iron-icon>{{modalHeading}}</h2>
         <paper-input label="Title" value="{{newItem.heading::input}}"></paper-input>
         <paper-input label="Description" value="{{newItem.description::input}}"></paper-input>
-      </paper-dialog-scrollable>
-      <div class="buttons">
-        <paper-button dialog-dismiss>Cancel</paper-button>
-        <paper-button dialog-confirm>Accept</paper-button>
+        <div class="buttons">
+          <paper-button dialog-dismiss>Cancel</paper-button>
+          <paper-button dialog-confirm>Accept</paper-button>
+        </div>
       </div>
     </paper-dialog>
   </template>
@@ -96,7 +92,7 @@
 
           modalHeading: {
             type: String,
-            computed: 'getModalHeading(newItem.pro)'
+            computed: '_modalHeading(newItem.pro)'
           }
         },
 
@@ -121,8 +117,8 @@
           };
         },
 
-        getModalHeading: function(pro) {
-          var end = pro ? 'pro' : 'con';
+        _modalHeading: function(pro) {
+          var end = pro ? 'plus' : 'minus';
           return 'Add a ' + end;
         },
 
