@@ -61,7 +61,7 @@
         <paper-input label="Description" value="{{newItem.description::input}}"></paper-input>
         <div class="buttons">
           <paper-button dialog-dismiss>Cancel</paper-button>
-          <paper-button dialog-confirm>Accept</paper-button>
+          <paper-button dialog-confirm disabled$="{{disableAccept}}">Accept</paper-button>
         </div>
       </div>
     </paper-dialog>
@@ -90,6 +90,11 @@
             },
           },
 
+          disableAccept: {
+            type: Boolean,
+            computed: '_disableAccept(newItem.heading)'
+          },
+
           modalHeading: {
             type: String,
             computed: '_modalHeading(newItem.pro)'
@@ -115,6 +120,10 @@
             pro: true,
             votes: 0
           };
+        },
+
+        _disableAccept: function() {
+          return this.newItem.heading === '';
         },
 
         _modalHeading: function(pro) {
