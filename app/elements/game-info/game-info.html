@@ -69,6 +69,7 @@
         <dd>
           <game-players min={{players.min}} max={{players.max}} recommended={{players.recommended}}></game-players>
         </dd>
+
         <dt>
           <iron-icon icon="hourglass-empty"></iron-icon>
           <label>Ages</label>
@@ -76,6 +77,7 @@
         <dd>
           <game-ages min="{{ages.min}}" max="{{ages.max}}"></game-ages>
         </dd>
+
         <dt>
           <iron-icon icon="schedule"></iron-icon>
           <label>Time</label>
@@ -83,6 +85,7 @@
         <dd>
           30-70 min
         </dd>
+
         <dt>
           <iron-icon icon="event"></iron-icon>
           <label>Released</label>
@@ -90,20 +93,23 @@
         <dd>
           <game-released is-released="{{released.released}}" year="{{released.year}}"></game-released>
         </dd>
+
         <dt>
           <iron-icon icon="home"></iron-icon>
-          <label>Website</label>
+          <a href="{{website}}">
+            Website
+          </a>
         </dt>
-        <dd>
-          <a href="{{website}}">{{website}}</a>
-        </dd>
+        <dd></dd>
+
         <dt>
           <iron-icon icon="book"></iron-icon>
-          <label>Rules</label>
+          <a href="{{rules}}">
+            Rules
+          </a>
         </dt>
-        <dd>
-          <a href="{{rules}}">{{rules}}</a>
-        </dd>
+        <dd></dd>
+
         <dt>
           <iron-icon icon="image:edit"></iron-icon>
           <label>Designers</label>
@@ -111,6 +117,7 @@
         <dd>
           <game-designers designers="{{designers}}"></game-designers>
         </dd>
+
         <dt>
           <iron-icon icon="image:brush"></iron-icon>
           <label>Artists</label>
@@ -118,6 +125,7 @@
         <dd>
           <game-artists artists="{{artists}}"></game-artists>
         </dd>
+
         <dt>
           <iron-icon icon="work"></iron-icon>
           <label>Published by</label>
@@ -125,6 +133,7 @@
         <dd>
           <game-publishers publishers="{{publishers}}"></game-publishers>
         </dd>
+
       </dl>
     </section>
   </template>
