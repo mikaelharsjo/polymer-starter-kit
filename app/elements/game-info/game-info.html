@@ -8,45 +8,50 @@
 <link rel="import" href="../game-ratings/game-ratings.html">
 <link rel="import" href="../../elements/tag-list/tag-list.html">
 
+<link rel="import" href="../../styles/shared-styles.html">
+
 <dom-module id="game-info">
-  <style is="custom-style">
-    section {
-      padding: 16px;
-    }
-
-    div {
-      margin-top: 10px;
-    }
-
-    dl dd {
-      display: inline;
-      margin: 0;
-    }
-
-    dl dd:after {
-      display: block;
-      content: '';
-      margin-bottom: 7px;
-    }
-
-    dl dt {
-      display: inline-block;
-      min-width: 40%;
-    }
-
-    iron-icon {
-      color: var(--secondary-text-color);
-    }
-
-    label {
-      font-weight: 300;
-    }
-
-    game-ratings {
-      margin-bottom: 20px;
-    }
-  </style>
   <template>
+
+    <style include="shared-styles"></style>
+    <style>
+      section {
+        padding: 16px;
+      }
+
+      div {
+        margin-top: 10px;
+      }
+
+      dl dd {
+        display: inline;
+        margin: 0;
+      }
+
+      dl dd:after {
+        display: block;
+        content: '';
+        margin-bottom: 7px;
+      }
+
+      dl dt {
+        display: inline-block;
+        min-width: 40%;
+      }
+
+      iron-icon {
+        color: var(--secondary-text-color);
+      }
+
+      label {
+        font-weight: 300;
+      }
+
+      game-ratings {
+        margin-bottom: 20px;
+      }
+    </style>
+
     <iron-image src="http://lorempixel.com/400/400" style="width:100%; height: 200px" sizing="cover"></iron-image>
 
     <section>

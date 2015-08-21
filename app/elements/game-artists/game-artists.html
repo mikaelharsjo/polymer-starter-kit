@@ -1,5 +1,9 @@
+<link rel="import" href="../../styles/shared-styles.html">
+
 <dom-module id="game-artists">
   <template>
+    <style include="shared-styles"></style>
+
     <template is="dom-repeat" items="{{artists}}">
       <a href="/artists/{{item.id}}">{{item.name}}</a>
     </template>
