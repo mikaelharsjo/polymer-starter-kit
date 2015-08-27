@@ -56,14 +56,25 @@
           this.showAdder = !this.showAdder;
 
           var self = this;
-          this.$.add.addEventListener('blur', function() {
-            if (self.tag) {
-              self.push('tags', self.tag);
+
+          this.$.add.addEventListener('keyup', function(e) {
+            if (e.keyCode === 13) {
+              self.addCurrent();
             }
-            self.tag = '';
+          });
+
+          this.$.add.addEventListener('blur', function() {
+            self.addCurrent();
           });
 
           this.$.add.focus();
+        },
+
+        addCurrent: function() {
+          if (this.tag) {
+            this.push('tags', this.tag);
+          }
+          this.tag = '';
         }
       });
     })();
