@@ -22,7 +22,7 @@
       margin-right: var(--right-margin);
     }
 
-    label {
+    .released-label {
       margin-left: var(--right-margin);
     }
 
@@ -33,11 +33,15 @@
     .left-col {
       margin-right: var(--right-margin);
     }
+
+    .row {
+      margin-bottom: 30px;
+    }
   </style>
 
   <template>
 
-    <div class="layout horizontal">
+    <div class="layout horizontal row">
       <div class="flex left-col">
         <h3>Your version:</h3>
       </div>
@@ -46,7 +50,8 @@
       </div>
     </div>
 
-    <div class="layout horizontal">
+    <h4>Rating</h4>
+    <div class="layout horizontal row">
       <div class="flex left-col">
         <game-ratings rating="{{game.rating}}" editable="true"></game-ratings>
       </div>
@@ -55,43 +60,44 @@
       </div>
     </div>
 
-    <div class="layout horizontal">
+    <div class="layout horizontal row">
       <div class="flex left-col">
-        <tag-edit tags="{{game.categories}}" tag-class="tag-first"></tag-edit>
+          <tag-edit tags="{{game.categories}}" tag-class="tag-first" label="Categories"></tag-edit>
+          <!--<input is="iron-input" class="paper-input">-->
       </div>
       <div class="flex">
         <tag-list tags="{{game.categories}}" tag-class="tag-first"></tag-list>
       </div>
     </div>
 
-    <div class="layout horizontal">
+    <div class="layout horizontal row">
       <div class="flex left-col">
-        <tag-edit tags="{{game.mechanics}}" tag-class="tag-second"></tag-edit>
+        <tag-edit tags="{{game.mechanics}}" tag-class="tag-second" label="Mechanics"></tag-edit>
       </div>
       <div class="flex">
         <tag-list tags="{{game.mechanics}}" tag-class="tag-second"></tag-list>
       </div>
     </div>
 
-    <div class="layout horizontal">
+    <div class="layout horizontal row">
       <div class="flex left-col">
-        <tag-edit tags="{{game.tags}}" tag-class="tag-third"></tag-edit>
+        <tag-edit tags="{{game.tags}}" tag-class="tag-third" label="Tags"></tag-edit>
       </div>
       <div class="flex">
         <tag-list tags="{{game.tags}}" tag-class="tag-third"></tag-list>
       </div>
     </div>
 
-    <div class="layout horizontal">
+    <div class="layout horizontal row">
       <div class="flex left-col">
-        <paper-input label="Title" value="{{game.name::input}}"></paper-input>
+        <paper-input label="Title" value="{{userGame.name::input}}"></paper-input>
       </div>
       <div class="flex self-center">
         <span>{{game.name}}</span>
       </div>
     </div>
 
-    <div class="layout horizontal">
+    <div class="layout horizontal row">
       <div class="flex left-col">
         <paper-input label="Website" value="{{game.website::input}}"></paper-input>
       </div>
@@ -101,7 +107,7 @@
     </div>
 
     <h4>Ages</h4>
-    <div class="layout horizontal">
+    <div class="layout horizontal row">
       <div class="flex left-col">
         <section class="layout horizontal">
           <paper-input class="flex margin-right" label="Minimum" value="{{game.ages.min::input}}"></paper-input>
@@ -116,7 +122,7 @@
     </div>
 
     <h4>Players</h4>
-    <div class="layout horizontal">
+    <div class="layout horizontal row">
       <div class="flex left-col">
         <section class="layout horizontal">
           <paper-input class="flex margin-right" label="Minimum" value="{{game.players.min::input}}"></paper-input>
@@ -132,11 +138,11 @@
     </div>
 
     <h4>Released</h4>
-    <div class="layout horizontal">
+    <div class="layout horizontal row">
       <div class="flex left-col">
         <section class="layout horizontal center">
           <paper-input class="flex" label="Year" value="{{game.released.year::input}}"></paper-input>
-          <label>Released?
+          <label class="released-label">Released?
             <paper-toggle-button class="flex" label="Released" checked="{{game.released.released}}"></paper-toggle-button>
           </label>
         </section>
@@ -156,7 +162,16 @@
 				is: 'game-edit',
 
 				properties: {
-					game: Object
+					game: Object,
+
+          userGame: {
+            type: Object,
+            value: function() {
+              return {
+                name: 'My game'
+              };
+            }
+          }
 				}
 
 			});
