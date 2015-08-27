@@ -16,9 +16,16 @@
   </style>
 
   <template>
-    <tag-list tags="{{tags}}" tag-class="{{tagClass}}"></tag-list>
-    <paper-icon-button raised icon="add-circle" on-click="showAdd"></paper-icon-button>
-    <paper-input id="add" hidden="{{!showAdder}}" label="Add tag" value="{{tag::input}}" no-label-float></paper-input>
+
+    <paper-input-container always-float-label>
+
+      <label>{{label}}</label>
+      <tag-list tags="{{tags}}" tag-class="{{tagClass}}" class="paper-input-input"></tag-list>
+      <paper-icon-button raised icon="add-circle" on-click="showAdd"></paper-icon-button>
+      <input is="iron-input" id="add" hidden="{{!showAdder}}" value="{{tag::input}}">
+
+    </paper-input-container>
+
   </template>
 
   <script>
@@ -35,6 +42,9 @@
             },
             tag: String,
             tagClass: String
+          },
+          value: {
+            notify: true
           }
         },
 
@@ -53,7 +63,7 @@
             self.tag = '';
           });
 
-          this.$.add.inputElement.focus();
+          this.$.add.focus();
         }
       });
     })();
