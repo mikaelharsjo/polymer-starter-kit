@@ -30,7 +30,7 @@
   <template>
 
     <iron-ajax auto
-        url="{{getUrl}}"
+        url="{{url}}"
         last-response="{{game}}"></iron-ajax>
 
     <div class="layout horizontal">
@@ -60,7 +60,7 @@
             type: Object,
             observer: '_gameChanged'
           },
-          getUrl: {
+          url: {
             type: String,
             computed: '_url(id)'
           }
@@ -74,7 +74,11 @@
           if (this.game) {
             var app = document.querySelector('#app');
             app.jumbotron = this.game.name;
-            app.bottomTitle = 'This is a subtitle';
+            app.bottomTitle = '';
+
+            var toolbar = document.querySelector('#mainToolbar');
+            toolbar.customStyle['--paper-toolbar-background'] = 'url(' + this.game.banner.url  +')';
+            toolbar.updateStyles();
           }
         }
 			});
