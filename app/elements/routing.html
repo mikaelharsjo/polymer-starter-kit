@@ -19,15 +19,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.route = 'home';
       app.jumbotron = 'Board Game DB';
       app.bottomTitle = 'A community driven database of board games';
+      app.scrollPageToTop();
     });
 
     page('/users', function () {
       app.route = 'users';
+      app.scrollPageToTop();
     });
 
     page('/users/:name', function (data) {
       app.route = 'user-info';
       app.params = data.params;
+      app.scrollPageToTop();
     });
 
     page('/games', function () {
@@ -41,6 +44,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     page('/contact', function () {
       app.route = 'contact';
+      app.scrollPageToTop();
     });
 
     // add #! before urls

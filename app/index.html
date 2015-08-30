@@ -53,6 +53,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- will be replaced with elements/elements.vulcanized.html -->
   <link rel="import" href="elements/elements.html">
   <!-- endreplace-->
+
+  <!-- For shared styles, shared-styles.html import in elements.html -->
+  <style is="custom-style" include="shared-styles"></style>
+
 </head>
 
 <body unresolved class="fullbleed layout vertical">
@@ -128,7 +132,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <section data-route="users">
               <paper-material elevation="1">
-                <h2 class="paper-font-display2">Users</h2>
+                <h2 class="page-title">Users</h2>
                 <p>This is the users section</p>
                 <a href="/users/Rob">Rob</a>
               </paper-material>
@@ -136,7 +140,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <section data-route="user-info">
               <paper-material elevation="1">
-                <h2 class="paper-font-display2">
+                <h2 class="page-title">
                 User:<span>{{params.name}}</span>
                 </h2>
                 <div>This is <span>{{params.name}}</span>'s section</div>
@@ -158,7 +162,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <section data-route="contact">
               <paper-material elevation="1">
-                <h2 class="paper-font-display2">Contact</h2>
+                <h2 class="page-title">Contact</h2>
                 <p>This is the contact section</p>
               </paper-material>
             </section>
